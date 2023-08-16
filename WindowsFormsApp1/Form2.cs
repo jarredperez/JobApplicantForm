@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
             frm1 = form1;
         }
 
-        public string ID { get; set; }
+        public string ID { get; set; } //Property used to pass selected record back to form1
 
         /*public string FirstName { get; set; }
 
@@ -45,59 +45,17 @@ namespace WindowsFormsApp1
 
         public void buttonReturn_Click(object sender, EventArgs e)
         {
+            //Create database connection
             SQLConnectionClass con = new SQLConnectionClass();
             con.OpenConnection();
-            con.CreateCommand($"SELECT * FROM View_Applicants WHERE LastName LIKE '%{txtLastNameF2.Text}%'");
+            con.CreateCommand($"SELECT * FROM View_Applicants WHERE LastName LIKE '%{txtLastNameF2.Text}%'"); //Queries based on given last name
 
             SqlDataAdapter da = new SqlDataAdapter(con.cmd);
             DataSet ds = new DataSet();
             da.Fill(ds, "View_Applicants");
             DataTable dt = ds.Tables["View_Applicants"];
 
-
- 
-
-            /*string applicantid;
-            string applicantfirstname;
-            string applicantlastname;
-            string applicanthometown;
-            string applicantgender;
-            string applicantjobtitle;
-            string applicantdateofbirth;
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                applicantid = dt.Rows[i]["ApplicantID"].ToString();
-                applicantfirstname = dt.Rows[i]["FirstName"].ToString();
-                applicantlastname = dt.Rows[i]["LastName"].ToString();
-                applicanthometown = dt.Rows[i]["HomeTown"].ToString();
-                applicantgender = dt.Rows[i]["Gender"].ToString();
-                applicantjobtitle = dt.Rows[i]["DesiredJobTitle"].ToString();
-                applicantdateofbirth = dt.Rows[i]["Date"].ToString();
-
-                ID = applicantid;
-                FirstName = applicantfirstname;
-                LastName = applicantlastname;
-                HomeTown = applicanthometown;
-                Genders = applicantgender;
-                JobTitle = applicantjobtitle;
-                DateOfBirth = applicantdateofbirth;
-            }*/
-
-
-            /*
-            SqlDataReader dataReader;
-            dataReader = qry_cmd.ExecuteReader();
-            applicantid = (string)dataReader["ApplicantID"];
-            applicantfirstname = (string)dataReader["FirstName"];
-            applicantlastname = (string)dataReader["LastName"];
-            applicanthometown = (string)dataReader["HomeTown"];
-            applicantgender = (string)dataReader["Gender"];
-            applicantjobtitle = (string)dataReader["DesiredJobTitle"];
-            applicantdateofbirth = (string)dataReader["Date"];
-            */
-
-
+            //Displays columns on listview
             listView1.Columns.Add("ID", 70);
             listView1.Columns.Add("FirstName", 70);
             listView1.Columns.Add("LastName", 70);
@@ -107,7 +65,7 @@ namespace WindowsFormsApp1
             listView1.Columns.Add("Date", 100);
             listView1.View = View.Details;
 
-
+            //Displays row data based on last name search
             for (int i = 0; i <= dt.Rows.Count - 1; i++)
             {
                 listView1.Items.Add(dt.Rows[i].ItemArray[0].ToString());
@@ -125,16 +83,48 @@ namespace WindowsFormsApp1
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            listView1.Items.Clear();
+            listView1.Items.Clear(); //Clears listview
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            txtBoxIdReturn.Text = listView1.SelectedItems[0].SubItems[0].Text;
+            txtBoxIdReturn.Text = listView1.SelectedItems[0].SubItems[0].Text; //Stores ID of double-clicked record
             ID = txtBoxIdReturn.Text;
-
-            //ID = int.Parse(txtBoxIdReturn.Text);
             this.Close();
         }
     }
 }
+
+
+
+
+
+
+
+
+/*string applicantid;
+string applicantfirstname;
+string applicantlastname;
+string applicanthometown;
+string applicantgender;
+string applicantjobtitle;
+string applicantdateofbirth;
+
+for (int i = 0; i < dt.Rows.Count; i++)
+{
+    applicantid = dt.Rows[i]["ApplicantID"].ToString();
+    applicantfirstname = dt.Rows[i]["FirstName"].ToString();
+    applicantlastname = dt.Rows[i]["LastName"].ToString();
+    applicanthometown = dt.Rows[i]["HomeTown"].ToString();
+    applicantgender = dt.Rows[i]["Gender"].ToString();
+    applicantjobtitle = dt.Rows[i]["DesiredJobTitle"].ToString();
+    applicantdateofbirth = dt.Rows[i]["Date"].ToString();
+
+    ID = applicantid;
+    FirstName = applicantfirstname;
+    LastName = applicantlastname;
+    HomeTown = applicanthometown;
+    Genders = applicantgender;
+    JobTitle = applicantjobtitle;
+    DateOfBirth = applicantdateofbirth;
+}*/

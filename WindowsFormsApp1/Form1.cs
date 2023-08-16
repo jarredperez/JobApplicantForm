@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private bool CheckIfEmpty(string value, TextBox box)
+        private bool CheckIfEmpty(string value, TextBox box) //Checks if a given textbox is empty after submitting the form 
         {
             bool status = true;
             if (value == "")
@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             return status;
         }
 
-        private bool CheckIfComboEmpty(string value, ComboBox box)
+        private bool CheckIfComboEmpty(string value, ComboBox box) //Checks if a given combobox is not selected after submitting the form 
         {
             bool status = true;
             if (value == "")
@@ -49,12 +49,14 @@ namespace WindowsFormsApp1
             return status;
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e) //Code for save button
         {
+            //Create connection to database
             SQLConnectionClass saveButton = new SQLConnectionClass();
             saveButton.OpenConnection();
             saveButton.CreateCommand("");
             
+            //Check if the radio buttons for the applicant's gender are checked, and which of them is checked
             string g = string.Empty;
             if (radioButtonFemale.Checked == false && radioButtonMale.Checked == false)
             {
@@ -69,6 +71,7 @@ namespace WindowsFormsApp1
                 g = "Female";
             }
 
+            //Check if textboxes and comboboxes are not empty before submitting application
             string n = txtFirstname.Text;
             string l = txtLastname.Text;
             string j = txtJobtitle.Text;
@@ -78,7 +81,7 @@ namespace WindowsFormsApp1
 
             if (firstName && lastName && jobTitle)
                 {
-                    saveButton.cmd.CommandText = "AddApplicant";
+                    saveButton.cmd.CommandText = "AddApplicant"; //Stored Procedure for inserting values into database table
                     saveButton.cmd.CommandType = CommandType.StoredProcedure;
                     saveButton.cmd.Parameters.Add("@FirstName", SqlDbType.VarChar, 50).Value = txtFirstname.Text;
                     saveButton.cmd.Parameters.Add("@LastName", SqlDbType.VarChar, 50).Value = txtLastname.Text;
@@ -91,19 +94,21 @@ namespace WindowsFormsApp1
                 saveButton.CloseConnection();
         }
 
-        private void buttonSearch_Click(object sender, EventArgs e)
+        private void buttonSearch_Click(object sender, EventArgs e) //Code for search button
         {
             Form2 form2 = new Form2(this); //instance of second form
             form2.ShowDialog();
-          
+
+            //Create connection to database
             SQLConnectionClass saveButton = new SQLConnectionClass();
             saveButton.OpenConnection();
-            saveButton.CreateCommand($"SELECT * FROM View_Applicants WHERE ApplicantID = '{form2.ID}'");
+            saveButton.CreateCommand($"SELECT * FROM View_Applicants WHERE ApplicantID = '{form2.ID}'"); //Receives ID from the record selected on form 2
             SqlDataAdapter da = new SqlDataAdapter(saveButton.cmd);
             DataSet ds = new DataSet();
             da.Fill(ds, "View_Applicants");
             DataTable dt = ds.Tables["View_Applicants"];
 
+            //Assigns each column value on dt(table) to the labels shown on the form to display applicant data
             labelID.Text = dt.Rows[0]["ApplicantID"].ToString();
             labelFirstName.Text = dt.Rows[0]["FirstName"].ToString();
             labelLastName.Text = dt.Rows[0]["LastName"].ToString();
