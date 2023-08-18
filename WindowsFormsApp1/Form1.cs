@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
             {
                 errorProvider1.SetError(box, "");
             }
-            return status;
+            return status; //hola
         }
 
         private void buttonSave_Click(object sender, EventArgs e) //Code for save button
