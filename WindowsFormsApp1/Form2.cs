@@ -30,18 +30,6 @@ namespace WindowsFormsApp1
 
         public string ID { get; set; } //Property used to pass selected record back to form1
 
-        /*public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string HomeTown { get; set; }
-
-        public string Genders { get; set; }
-
-        public string JobTitle { get; set; }
-
-        public string DateOfBirth { get; set; }
-        */
 
         public void buttonReturn_Click(object sender, EventArgs e)
         {
