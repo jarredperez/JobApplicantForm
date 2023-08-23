@@ -88,31 +88,3 @@ namespace WindowsFormsApp1
 
 
 
-
-
-/*string applicantid;
-string applicantfirstname;
-string applicantlastname;
-string applicanthometown;
-string applicantgender;
-string applicantjobtitle;
-string applicantdateofbirth;
-
-for (int i = 0; i < dt.Rows.Count; i++)
-{
-    applicantid = dt.Rows[i]["ApplicantID"].ToString();
-    applicantfirstname = dt.Rows[i]["FirstName"].ToString();
-    applicantlastname = dt.Rows[i]["LastName"].ToString();
-    applicanthometown = dt.Rows[i]["HomeTown"].ToString();
-    applicantgender = dt.Rows[i]["Gender"].ToString();
-    applicantjobtitle = dt.Rows[i]["DesiredJobTitle"].ToString();
-    applicantdateofbirth = dt.Rows[i]["Date"].ToString();
-
-    ID = applicantid;
-    FirstName = applicantfirstname;
-    LastName = applicantlastname;
-    HomeTown = applicanthometown;
-    Genders = applicantgender;
-    JobTitle = applicantjobtitle;
-    DateOfBirth = applicantdateofbirth;
-}*/

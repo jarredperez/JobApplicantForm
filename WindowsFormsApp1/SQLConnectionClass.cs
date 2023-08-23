@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
     internal class SQLConnectionClass
     {
 
-        public string connectionString = "Data Source=JARRED_XPS15\\SQLEXPRESS;Initial Catalog=EFDB;Integrated Security=True";
+        public string connectionString = "Data Source=JARRED_XPS15;Initial Catalog=EFDB;Integrated Security=True";
         public SqlConnection con = null;
         public SqlCommand cmd = null;
 

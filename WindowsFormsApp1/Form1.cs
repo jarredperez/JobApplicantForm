@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
             {
                 errorProvider1.SetError(box, "");
             }
-            return status; //hola
+            return status; 
         }
 
         private void buttonSave_Click(object sender, EventArgs e) //Code for save button
@@ -118,6 +118,14 @@ namespace WindowsFormsApp1
             labelDate.Text = dt.Rows[0]["Date"].ToString();
 
             saveButton.CloseConnection();
+
+        }
+
+        private void ButtonStrengths_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3(this); 
+            form3.ShowDialog();
+
 
         }
 

@@ -62,6 +62,7 @@ namespace WindowsFormsApp1
             this.labelGender = new System.Windows.Forms.Label();
             this.labelFirstName = new System.Windows.Forms.Label();
             this.labelID = new System.Windows.Forms.Label();
+            this.ButtonStrengths = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
@@ -327,12 +328,23 @@ namespace WindowsFormsApp1
             this.labelID.TabIndex = 24;
             this.labelID.Text = "ID";
             // 
+            // ButtonStrengths
+            // 
+            this.ButtonStrengths.Location = new System.Drawing.Point(713, 405);
+            this.ButtonStrengths.Name = "ButtonStrengths";
+            this.ButtonStrengths.Size = new System.Drawing.Size(75, 33);
+            this.ButtonStrengths.TabIndex = 25;
+            this.ButtonStrengths.Text = "Strengths";
+            this.ButtonStrengths.UseVisualStyleBackColor = true;
+            this.ButtonStrengths.Click += new System.EventHandler(this.ButtonStrengths_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ButtonStrengths);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.labelFirstName);
             this.Controls.Add(this.labelGender);
@@ -403,6 +415,7 @@ namespace WindowsFormsApp1
         public System.Windows.Forms.Label labelLastName;
         public System.Windows.Forms.Label labelFirstName;
         public System.Windows.Forms.Label labelID;
+        private System.Windows.Forms.Button ButtonStrengths;
     }
 }
 
